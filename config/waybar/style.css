@@ -1,0 +1,159 @@
+/* Waybar - thème sombre translucide, accent cyan */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #cdd6f4;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background: rgba(17, 17, 27, 0.78);
+    border: 1px solid rgba(51, 204, 255, 0.25);
+    border-radius: 14px;
+    padding: 0 10px;
+}
+
+.modules-left {
+    padding-left: 6px;
+}
+
+.modules-right {
+    padding-right: 6px;
+}
+
+#workspaces {
+    background: transparent;
+    padding: 0 2px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    margin: 4px 2px;
+    min-width: 18px;
+    color: #6c7086;
+    background: transparent;
+    border-radius: 8px;
+    transition: all 0.15s ease;
+}
+
+#workspaces button:hover {
+    color: #cdd6f4;
+    background: rgba(51, 204, 255, 0.15);
+}
+
+#workspaces button.active {
+    color: #11111b;
+    background: #33ccff;
+    font-weight: bold;
+}
+
+#workspaces button.urgent {
+    color: #11111b;
+    background: #f38ba8;
+}
+
+#window {
+    color: #a6adc8;
+    padding: 0 10px;
+    font-style: italic;
+}
+
+#clock,
+#custom-date,
+#tray,
+#bluetooth,
+#custom-audio-out,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#custom-power {
+    padding: 0 10px;
+    margin: 4px 0;
+    color: #cdd6f4;
+}
+
+#clock {
+    color: #33ccff;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+#pulseaudio.muted {
+    color: #f38ba8;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+    color: #6c7086;
+}
+
+#bluetooth.connected {
+    color: #89b4fa;
+}
+
+#custom-audio-out {
+    color: #a6e3a1;
+}
+
+#network.disconnected {
+    color: #f38ba8;
+}
+
+#temperature.critical {
+    color: #f38ba8;
+}
+
+#battery.charging {
+    color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+    color: #f9e2af;
+}
+
+#battery.critical:not(.charging) {
+    color: #f38ba8;
+    animation: blink 1s linear infinite;
+}
+
+#custom-power {
+    color: #f38ba8;
+    font-size: 15px;
+    padding-right: 12px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+tooltip {
+    background: rgba(17, 17, 27, 0.95);
+    border: 1px solid rgba(51, 204, 255, 0.35);
+    border-radius: 10px;
+}
+
+tooltip label {
+    color: #cdd6f4;
+    padding: 4px;
+}
+
+@keyframes blink {
+    to {
+        color: #cdd6f4;
+    }
+}

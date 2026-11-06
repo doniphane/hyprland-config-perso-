@@ -1,0 +1,152 @@
+// Waybar - configuration principale
+{
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "spacing": 6,
+    "margin-top": 8,
+    "margin-left": 12,
+    "margin-right": 12,
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "custom/date",
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "bluetooth",
+        "custom/audio-out",
+        "pulseaudio",
+        "network",
+        "cpu",
+        "memory",
+        "temperature",
+        "battery",
+        "custom/power"
+    ],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            "active": "",
+            "default": ""
+        },
+        "persistent-workspaces": {
+            "*": 10
+        },
+        "on-click": "activate"
+    },
+
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱 {num_connections}",
+        "tooltip-format": "Bluetooth : {controller_alias}",
+        "tooltip-format-disabled": "Bluetooth désactivé",
+        "tooltip-format-connected": "{controller_alias}\nAppareils : {num_connections}",
+        "on-click": "blueman-manager",
+        "on-click-right": "bluetoothctl power off"
+    },
+
+    "custom/audio-out": {
+        "exec": "sh $HOME/.config/waybar/audio-output.sh",
+        "interval": 5,
+        "return-type": "json",
+        "on-click": "sh $HOME/.config/waybar/audio-menu.sh",
+        "tooltip": true
+    },
+
+    "custom/date": {
+        "exec": "sh $HOME/.config/waybar/date.sh",
+        "interval": 30,
+        "return-type": "json",
+        "format": "{}",
+        "tooltip": true
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%H:%M:%S}",
+        "tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁 muet",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+
+    "network": {
+        "format-wifi": "󰤨 {essid} {signalStrength}%",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-disconnected": "󰤭 hors ligne",
+        "tooltip-format-wifi": "{essid}\nSignal : {signalStrength}%\nIP : {ipaddr}",
+        "tooltip-format-ethernet": "{ifname}\nIP : {ipaddr}",
+        "tooltip-format-disconnected": "Aucune connexion",
+        "interval": 5,
+        "on-click": "kitty -e impala"
+    },
+
+    "cpu": {
+        "format": "󰻠 {usage}%",
+        "interval": 2,
+        "on-click": "kitty -e htop"
+    },
+
+    "memory": {
+        "format": "󰍛 {percentage}%",
+        "tooltip-format": "RAM : {used} / {total}",
+        "interval": 3
+    },
+
+    "temperature": {
+        "format": "󰔏 {temperatureC}°C",
+        "critical-threshold": 80,
+        "format-critical": "󰸁 {temperatureC}°C",
+        "interval": 5
+    },
+
+    "battery": {
+        "bat": "BAT0",
+        "interval": 30,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "{timeTo} (consommation : {power} W)"
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": "Éteindre / redémarrer",
+        "on-click": "hyprshutdown",
+        "on-click-right": "hyprlock"
+    }
+}
