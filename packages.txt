@@ -13,6 +13,7 @@ hyprsunset
 waybar
 kitty
 wofi
+wlogout
 dunst
 dolphin
 brightnessctl

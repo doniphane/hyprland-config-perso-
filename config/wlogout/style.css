@@ -1,0 +1,49 @@
+/* wlogout - thème sombre translucide, accent cyan (cohérent avec la waybar) */
+* {
+    background-image: none;
+    box-shadow: none;
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+}
+
+window {
+    background-color: rgba(17, 17, 27, 0.88);
+}
+
+button {
+    color: #cdd6f4;
+    background-color: rgba(51, 204, 255, 0.08);
+    border: 1px solid rgba(51, 204, 255, 0.25);
+    border-radius: 20px;
+    font-size: 22px;
+    background-repeat: no-repeat;
+    background-position: center 35%;
+    background-size: 22%;
+    margin: 40px 30px;
+    transition: all 0.2s ease;
+}
+
+button:hover,
+button:active,
+button:focus {
+    color: #11111b;
+    background-color: #33ccff;
+    border-radius: 10px;
+}
+
+/* Couleurs par action au survol */
+#lock:hover,
+#suspend:hover {
+    background-color: #33ccff;
+}
+
+#logout:hover {
+    background-color: #f9e2af;
+}
+
+#reboot:hover {
+    background-color: #cba6f7;
+}
+
+#shutdown:hover {
+    background-color: #f38ba8;
+}

@@ -106,6 +106,14 @@ window#waybar {
     color: #a6e3a1;
 }
 
+#custom-gpu {
+    color: #cba6f7;
+}
+
+#custom-gpu.critical {
+    color: #f38ba8;
+}
+
 #network.disconnected {
     color: #f38ba8;
 }

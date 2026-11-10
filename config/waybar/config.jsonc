@@ -23,6 +23,7 @@
         "network",
         "cpu",
         "memory",
+        "custom/gpu",
         "temperature",
         "battery",
         "custom/power"
@@ -122,6 +123,14 @@
         "interval": 3
     },
 
+    "custom/gpu": {
+        "exec": "sh $HOME/.config/waybar/gpu.sh",
+        "interval": 3,
+        "return-type": "json",
+        "on-click": "kitty -e nvtop",
+        "tooltip": true
+    },
+
     "temperature": {
         "format": "󰔏 {temperatureC}°C",
         "critical-threshold": 80,
@@ -145,8 +154,8 @@
 
     "custom/power": {
         "format": "⏻",
-        "tooltip": "Éteindre / redémarrer",
-        "on-click": "hyprshutdown",
+        "tooltip": "Menu session (wlogout)",
+        "on-click": "wlogout -b 5",
         "on-click-right": "hyprlock"
     }
 }

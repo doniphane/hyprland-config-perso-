@@ -24,7 +24,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 STAMP="$(date +%Y%m%d-%H%M%S)"
 BACKUP="$HOME/.config-backup-$STAMP"
 SKIP_PACKAGES=0
-CONFIG_DIRS=(hypr waybar dunst kitty fontconfig)
+CONFIG_DIRS=(hypr waybar wlogout dunst kitty fontconfig)
 
 info()  { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
 ok()    { printf '\033[1;32m  ✓\033[0m %s\n' "$*"; }
@@ -40,7 +40,7 @@ Usage :
     ./install.sh --skip-packages configs seulement (paquets déjà installés)
     ./install.sh --help          affiche cette aide
 
-Le script sauvegarde d'abord ~/.config/{hypr,waybar,dunst,kitty,fontconfig}
+Le script sauvegarde d'abord ~/.config/{hypr,waybar,wlogout,dunst,kitty,fontconfig}
 dans ~/.config-backup-AAAAmmjj-HHMMSS, puis installe les paquets de
 packages.txt, copie config/ dans ~/.config/, active Bluetooth et propose
 (optionnel) de passer la locale/clavier en français.

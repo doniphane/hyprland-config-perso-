@@ -19,7 +19,8 @@ hyprland-config/
 ├── README.md               # ce fichier
 └── config/                 # configurations à copier dans ~/.config/
     ├── hypr/
-    │   ├── hyprland.lua        # config principale (autostart + raccourcis)
+    │   ├── hyprland.lua        # config principale (raccourcis, règles de fenêtres)
+    │   ├── hyprland.conf       # autostart (polkitagent + hyprpaper)
     │   ├── hyprpaper.conf      # fond d'écran
     │   ├── hypridle.conf       # verrouillage auto (veille DÉSACTIVÉE)
     │   ├── hyprlock.conf       # écran de verrouillage
@@ -29,7 +30,11 @@ hyprland-config/
     │   ├── style.css           # thème sombre / accent cyan
     │   ├── date.sh             # date en français (+ calendrier)
     │   ├── audio-output.sh     # sortie audio affichée
-    │   └── audio-menu.sh       # menu de choix de sortie audio
+    │   ├── audio-menu.sh       # menu de choix de sortie audio
+    │   └── gpu.sh              # température / usage GPU
+    ├── wlogout/
+    │   ├── layout              # menu de session (verrouiller, éteindre…)
+    │   └── style.css           # style assorti à la waybar
     ├── dunst/dunstrc           # notifications
     └── kitty/kitty.conf        # terminal
 ```
@@ -66,7 +71,7 @@ Options :
 ### Ce que fait `install.sh`
 
 1. Vérifie Arch + récupère `sudo`.
-2. **Sauvegarde** `~/.config/{hypr,waybar,dunst,kitty,fontconfig}` dans
+2. **Sauvegarde** `~/.config/{hypr,waybar,wlogout,dunst,kitty,fontconfig}` dans
    `~/.config-backup-AAAAmmjj-HHMMSS`.
 3. Installe les paquets de `packages.txt` (`pacman -S --needed`).
 4. Remplace les configs par celles du dossier.
@@ -116,20 +121,23 @@ Options :
 `~/.config/hypr/hyprpaper.conf` (Hyprpaper ≥ 0.8, syntaxe en bloc) :
 
 ```conf
+splash = false
 wallpaper {
-    monitor = eDP-1
-    path = /usr/share/hypr/wall2.png
+    monitor =
+    path = ~/font.png
     fit_mode = cover
 }
 ```
 
-> Si le fond ne s'applique pas, remplace `eDP-1` par le nom de ton écran donné
-> par `hyprctl monitors`. Puis : `pkill -x hyprpaper; hyprpaper &`
+> `monitor` vide = tous les écrans. Change `path` pour ton image, puis :
+> `pkill -x hyprpaper; hyprpaper &`
 
 ### Barre
 - Modules et cadence : `~/.config/waybar/config.jsonc`
 - Couleurs / arrondis / transparence : `~/.config/waybar/style.css`
 - Recharger : `pkill -x waybar; waybar &`
+- Bouton ⏻ : ouvre **wlogout** (menu session). Layout : `~/.config/wlogout/layout`,
+  style : `~/.config/wlogout/style.css`. Clic droit sur ⏻ = verrouillage direct.
 
 ### Clavier
 Dans `~/.config/hypr/hyprland.lua`, section `input` :
